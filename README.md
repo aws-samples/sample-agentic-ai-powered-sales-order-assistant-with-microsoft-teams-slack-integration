@@ -4,7 +4,7 @@ An Agentic AI-powered solution that enables customers to gain real-time insights
 
 ##  Table of Contents
 
-[[_TOC_]]
+* TOC {:toc}
 
 ## Overview
 
