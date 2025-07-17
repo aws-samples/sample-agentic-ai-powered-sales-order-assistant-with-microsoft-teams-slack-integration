@@ -24,7 +24,7 @@ In the final stage, I will create an user interface using Streamlit, while also 
 
 ![alt text](Architecture/HL_Architecture.png)
 
-Flow:
+Architecture Flow:
 1. Users can access the application through Streamlit UI or Slack
 2. Based on user inputs, Bedrock agent orchestrates interactions between different applications [SAP, Non-SAP Lgoistics] 
    and data sources or Bedrock knowledge bases.
