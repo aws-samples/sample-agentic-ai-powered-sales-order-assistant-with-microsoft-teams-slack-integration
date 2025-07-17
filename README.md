@@ -4,8 +4,14 @@ An Agentic AI-powered solution that enables customers to gain real-time insights
 
 ##  Table of Contents
 
-* TOC {:toc}
+   - [Overview](#overview)
+   - [Prerequisites](#prerequisites)
+   - [Deployment Steps](#deployment-steps)
+   - [Cost](#cost)
+   - [Demo](#demo)
+   - [Conclusion](#conclusion)
 
+     
 ## Overview
 
 SAP systems are enterprise backbones managing critical processes and data. Organizations need better ways to leverage this data for insights and decision-making. Generative AI's NLP enables natural language interaction with SAP systems, making data accessible without technical expertise. This integration combines structured SAP data with unstructured sources, enabling better forecasting and personalized experiences. AWS and SAP support customers' GenAI adoption through AI services, infrastructure, and implementation resources that integrate with their broader cloud ecosystem
