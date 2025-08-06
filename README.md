@@ -27,7 +27,7 @@ In the final stage, I will create an user interface using Streamlit, while also 
 Architecture Flow:
 1. Users can access the application through Streamlit UI or Slack
 2. Based on user inputs, Bedrock agent orchestrates interactions between different applications [SAP, Non-SAP Lgoistics] 
-   and data sources or Bedrock knowledge bases.
+   and data sources or Bedrock Knowledge Bases.
 3. If the user query is related to SAP Sales order, Bedrock Agent invokes Sales Order action group.  
     3a. Lambda executes the business logic for action group SAP Sales Order.\
     3b. Lambda executes the business logic to generate OData URL dynamically based on the user query.\
@@ -36,13 +36,13 @@ Architecture Flow:
    3e,3f. AWS Secrets Manager to store system connection details and SAP system login credentials  for the service user.\
     3g. Using the OData URL generated in step 3b and system credentials in step 3f, business data is fetched from 
         SAPsystem with the help of OData data protocol.\
-    3h. Knowledge base is invoked to supplement information from SAP system if needed.\
+    3h. Knowledge Bases is invoked to supplement information from SAP system if needed.\
     3i. Finally, the Bedrock agent combines all the information and responds to the user query.\
 
 4. If the user query is related to shipping information, Bedrock agent invokes Non-SAP Logistic System action group.  
     4a. Lambda executes the business logic for action group Logistics System.\
     4b. Dynamo DB that holds Logistic information about Sales Order.\
-    4c. Bedrock Knowledge base to supplement information from Logistics  system.\
+    4c. Bedrock Knowledge Bases to supplement information from Logistics  system.\
     4d. Finally, the Bedrock agent combines all the information and responds to the user query.
     
 5. If the user queries general information from organization’s data, Bedrock Agent invokes this knowledge base
@@ -80,7 +80,7 @@ II. As a second step, I will create two Bedrock Knowledge Bases to complement an
 
 - `SAP-external-knowledgebase` I will use this knowledgebase to provide supplementary details to SAP and non-SAP data.
 
-I have considered the following inputs while creating the two knowledge bases, while keeping all other settings at their default values.
+I have considered the following inputs while creating the two Knowledge Bases, while keeping all other settings at their default values.
 
 * **Provide Knowledge Base details**
      * Knowledge Base name: Choose a name for each knowledge bases with a user-friendly description. I have used `Odata-Schema-knowledgebase` and `SAP-external-knowledgebase`.
@@ -89,7 +89,7 @@ I have considered the following inputs while creating the two knowledge bases, w
 * **Configure data source**
     * Data source: Choose `Amazon S3`
     * Data source name: Choose a name for each data source.
-    * S3 URI: Create two S3 buckets, one for each knowledge bases. Upload the `Sales_Order_Schema.json` file for `Odata-Schema-knowledgebase` and `Shipping_Policy.pdf` for `SAP-external-knowledgebase` from GitHub repo to corresponding S3 buckets and provide the S3 URI.
+    * S3 URI: Create two S3 buckets, one for each Knowledge Bases. Upload the `Sales_Order_Schema.json` file for `Odata-Schema-knowledgebase` and `Shipping_Policy.pdf` for `SAP-external-knowledgebase` from GitHub repo to corresponding S3 buckets and provide the S3 URI.
 
 * **Configure data storage and processing**
     * Embeddings model: `Amazon Titan Text Embeddings V2`
@@ -103,7 +103,7 @@ Here's what my final entry looks like:
 
 III. Now I will create will two lambda functions to extract data from SAP systems based on user query.
 
-- `SAP-Odata-URL-Generation` -This lambda executes the business logic to generate Odata URL based on the user queries with the help of LLM supported by schema details from the knowledge base and host details from AWS secrets manager.
+- `SAP-Odata-URL-Generation` -This lambda executes the business logic to generate Odata URL based on the user queries with the help of LLM supported by schema details from the Bedrock Knowledge Bases and host details from AWS secrets manager.
 - `SAP-Sales-Order-Query` - This Lambda function executes the core business logic for retrieving data from the SAP system. It utilizes the OData URL provided by the SAP-Odata-URL-Generation lambda and securely accesses system credentials stored in AWS Secrets Manager. The function then processes the fetched data, leveraging LLM through bedrock, and finally presents the structured information to the Bedrock agent for further use.
 
 I have considered the below inputs while creating the functions, while keeping all other settings at their default values.
@@ -140,7 +140,7 @@ II.	I will now create a lambda function to extract data from the DynamoDB table 
 `General-information-knowledgebase`: I will use this knowledge base to provide guidance on business processes, though it can be adapted to address other relevant subject areas as needed.
 I assume, now you already know how to create a knowledge base. I have considered the below inputs while creating the knowledge bases, keeping the rest as default.
 - Provide Knowledge Base details
-    * Knowledge Base name: Choose a name for each knowledge bases, I have used `General-information-knowledgebase` with a user-friendly description.
+    * Knowledge Base name: Choose a name for each Knowledge Bases, I have used `General-information-knowledgebase` with a user-friendly description.
     * IAM permissions: Choose `Create and use a new service role`
 - Configure data source
     * Data source: Choose **Amazon S3**
@@ -183,7 +183,7 @@ I have considered the below inputs while creating the bedrock agent, while keepi
 - S3 Url: Create a S3 bucket and upload the file `logistics.json` from GitHub to S3 bucket and provide the S3 Uri of the bucket.
 
 - Memory : Choose **Enabled** with Memory duration to 2 days and Maximum no of recent sessions to 20.
-- Knowledge Bases : Add the knowledge bases created before
+- Knowledge Bases : Add the Knowledge Bases created before
     * Select Knowledge Base: `SAP-external-knowledgebase`. 
     Knowledge Base instructions for Agent: Use this knowledge base when you need some information outside of SAP system and combine it with SAP system data to complete the response
     * Select Knowledge Base: `General-Information-knowledgebase`. 
