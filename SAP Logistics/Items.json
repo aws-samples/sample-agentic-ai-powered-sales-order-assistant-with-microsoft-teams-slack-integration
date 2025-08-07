@@ -1,0 +1,27 @@
+[
+    {
+        "order_id" : 1368,
+        "Order_Received_Date" : "27-03-2024",
+        "Order_Shipped_Date" : "27-03-2024",
+        "Shipping_Category" : "Priority",
+        "Shipping_Status" : "Order Delivered",
+        "Vehicle_Type" :  "Bike"
+    },
+    {
+        "order_id" : 24,
+        "Order_Received_Date" : "25-01-2024",
+        "Order_Shipped_Date" : "25-01-2024",
+        "Shipping_Category" : "Normal",
+        "Shipping_Status" : "Shipped",
+        "Vehicle_Type" :  "Truck"
+    },
+    {
+        "order_id" : 78,
+        "Order_Received_Date" : "13-04-2024",
+        "Order_Shipped_Date" : "to be updated",
+        "Shipping_Category" : "Economy",
+        "Shipping_Status" : "Order Prepared",
+        "Vehicle_Type" :  "Van"
+    }
+
+]
