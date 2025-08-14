@@ -403,7 +403,7 @@ Operating Large Language Models (LLMs) involves substantial infrastructure, deve
 
 ## Demo
 
- 1. [Short demo with Streamlit and Slack](Assets/Demo_Streamlit_Slack.mp4)
+ 1. [Short demo with Streamlit and Slack](Assets/Demo_Streamlit_Slack.mov)
  
  2. [Short demo with MS Teams](Assets/Demo_Teams.mov)
 
