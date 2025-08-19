@@ -1,0 +1,59 @@
+{
+"openapi": "3.0.0",
+    "info": {
+        "title": "Logistic Details Bot API",
+        "version": "1.0.0",
+        "description": "Customer service APIs for fetching logistic details of sales order"
+    },
+    "paths": {
+        "/salesorder/{SalesOrderID}": {
+            "get": {
+                "summary": "Get sales order logistic details",
+                "description": "Based on provided order id, returns logistic information like Order received date, order shipping date, vehicle details etc.",
+                "operationId": "GetLogisticInfo",
+                "parameters": [{
+                    "name": "SalesOrderID",
+                    "in": "path",
+                    "description": "Sales Order ID",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Get getLogistic information",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "SalesOrderID": {
+                                                "type": "int",
+                                                "description": "This is the logistic details for the sales order"
+                                            },
+                                            "Order_Received_Date": {
+                                                "type": "string",
+                                                "description": "Date when order shipping request was received by the logistic team"
+                                            },
+                                            "Order_Shipped_Date": {
+                                                "type": "string",
+                                                "description": "Date when order was shipped by the logistic team"
+                                            },
+                                            "Vehicle_Type": {
+                                                "type": "string",
+                                                "description": "Type of vehicle the order was shipped"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }    
+}
