@@ -179,8 +179,7 @@ I have considered the below inputs while creating the bedrock agent, while keepi
         Action group type: **Define with API schemas**.  
         Action group invocation: **Select an existing Lambda function** and select the lambda function we created in Step 2, `Logistics-System`.    
         Action group schema: Select an **existing API schema**.
-
-- S3 Url: Create a S3 bucket and upload the file `logistics.json` from GitHub to S3 bucket and provide the S3 Uri of the bucket.
+        S3 Url: Create a S3 bucket and upload the file `logistics.json` from GitHub to S3 bucket and provide the S3 Uri of the bucket.
 
 - Memory : Choose **Enabled** with Memory duration to 2 days and Maximum no of recent sessions to 20.
 - Knowledge Bases : Add the Knowledge Bases created before
