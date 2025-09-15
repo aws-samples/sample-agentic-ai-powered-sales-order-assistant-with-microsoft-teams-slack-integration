@@ -114,6 +114,7 @@ def query_salesdata(query, bedrock_client, lambda_client, S4_username, S4_passwo
                         Here's the example for you to consider:
                         <example>
                         To Sum up three numbers a,b,c. We first calculate a+b, then we calculate a+b+c for the final result.
+                        </example>
                        """
         
         messages = [{"role": "user", "content": query}]
